@@ -1,0 +1,33 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Account List
+    body
+        h4
+            a(href="/account/create") Create New  
+        form(action="/account/search")
+            label(for="email") Email
+            input(name="email", id="email")
+            input(type="submit", value="Search")  
+        h1 Account List 
+        table
+            thead
+                tr
+                    th ID 
+                    th Email 
+                    th Phone 
+                    th Image
+            tbody 
+                if accounts.length > 0
+                    each item in accounts 
+                        tr 
+                            td=item._id 
+                            td=item.email 
+                            td=item.phone 
+                            td 
+                                img(src=`/images/${item.image}`, alt="", style="width: 200px; height: auto")
+                else 
+                    tr 
+                        td(colspan= '4') No Account 
